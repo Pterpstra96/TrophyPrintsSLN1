@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Sign-In Here!";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>This will contain a login box</p>
+
+
+<br />
+<br />
+<div id="loginDiv" name="loginDiv">
+    <label for="uname"> Username: </label>
+    <input type="text" id="uname" name="uname" /><br /><br />
+    <label for="password"> Password: </label>
+    <input type="password" id="password" name="password" />
+
+    <br />
+    <br />
+    <button type="button">Enter</button>
+
+    <br />
+    <br />
+    <br />
+    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="regpage">
+        Don't have an account? Register here!
+    </a>
+</div>
+
+<h1></h1>
