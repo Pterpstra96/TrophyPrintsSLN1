@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using TrophyPrints.Models;
+using TrophyPrints.Services;
 
 namespace TrophyPrints.Controllers
 {
@@ -38,8 +39,20 @@ namespace TrophyPrints.Controllers
         }
         public IActionResult ProcessLogin(UserModel newUser)
         {
-            if ()
-            return View("index", newUser);
+            /* if ()  WILL NEED IF THEN STATEMENT TO VERIFY USER LOGIN INFORMATION */
+
+            SecurityService security = new SecurityService();
+            if (security.isValid(newUser))
+            {
+                return View("LoginSuccess", newUser);
+            }
+            else 
+            
+            {
+                return View("LoginFailure", newUser);
+            }
+
+            
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

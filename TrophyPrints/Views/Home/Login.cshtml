@@ -1,29 +1,41 @@
-﻿@{
-    ViewData["Title"] = "Sign-In Here!";
+﻿@model TrophyPrints.Models.UserModel
+
+@{
+    ViewData["Title"] = "View";
 }
-<h1>@ViewData["Title"]</h1>
-
-<p>This will contain a login box</p>
 
 
-<br />
-<br />
-<div id="loginDiv" name="loginDiv">
-    <label for="uname"> Username: </label>
-    <input type="text" id="uname" name="uname" /><br /><br />
-    <label for="password"> Password: </label>
-    <input type="password" id="password" name="password" />
-
-    <br />
-    <br />
-    <button type="button">Enter</button>
-
-    <br />
-    <br />
-    <br />
-    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="regpage">
-        Don't have an account? Register here!
-    </a>
+<h4>Enter Login Details: </h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ProcessLogin">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" type="password"/>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
 </div>
 
-<h1></h1>
+<div>
+    <a asp-action="Index">Back to List</a>
+    </br>
+    </br>
+    <a asp-action="regpage">Create new account</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
